@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPollTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPollEmpty}" rendered="#{pollController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{pollController.items.rowCount > 0}">
+                    <h:outputText value="#{pollController.pagination.pageFirstItem + 1}..#{pollController.pagination.pageLastItem + 1}/#{pollController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{pollController.previous}" value="#{bundle.Previous} #{pollController.pagination.pageSize}" rendered="#{pollController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{pollController.next}" value="#{bundle.Next} #{pollController.pagination.pageSize}" rendered="#{pollController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{pollController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPollTitle_title}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.title}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPollTitle_description}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.description}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPollTitle_fromDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fromDate}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPollTitle_toDate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.toDate}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPollTitle_result}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.result}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPollTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{pollController.prepareView}" value="#{bundle.ListPollViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pollController.prepareEdit}" value="#{bundle.ListPollEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{pollController.destroy}" value="#{bundle.ListPollDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{pollController.prepareCreate}" value="#{bundle.ListPollCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPollIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

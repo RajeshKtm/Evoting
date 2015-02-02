@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditUserPollsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditUserPollsLabel_userId}" for="userId" />
+                    <h:selectOneMenu id="userId" value="#{userPollsController.selected.userId}" title="#{bundle.EditUserPollsTitle_userId}" required="true" requiredMessage="#{bundle.EditUserPollsRequiredMessage_userId}">
+                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditUserPollsLabel_pollOptionId}" for="pollOptionId" />
+                    <h:selectOneMenu id="pollOptionId" value="#{userPollsController.selected.pollOptionId}" title="#{bundle.EditUserPollsTitle_pollOptionId}" required="true" requiredMessage="#{bundle.EditUserPollsRequiredMessage_pollOptionId}">
+                        <f:selectItems value="#{pollOptionsController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditUserPollsLabel_pollId}" for="pollId" />
+                    <h:inputText id="pollId" value="#{userPollsController.selected.pollId}" title="#{bundle.EditUserPollsTitle_pollId}" />
+                    <h:outputLabel value="#{bundle.EditUserPollsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{userPollsController.selected.id}" title="#{bundle.EditUserPollsTitle_id}" />
+                </h:panelGrid>
+                <h:commandLink action="#{userPollsController.update}" value="#{bundle.EditUserPollsSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditUserPollsViewLink}"/>
+                <br />
+                <h:commandLink action="#{userPollsController.prepareList}" value="#{bundle.EditUserPollsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditUserPollsIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

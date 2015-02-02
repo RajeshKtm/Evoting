@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPollTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPollLabel_title}"/>
+                    <h:outputText value="#{pollController.selected.title}" title="#{bundle.ViewPollTitle_title}"/>
+                    <h:outputText value="#{bundle.ViewPollLabel_description}"/>
+                    <h:outputText value="#{pollController.selected.description}" title="#{bundle.ViewPollTitle_description}"/>
+                    <h:outputText value="#{bundle.ViewPollLabel_fromDate}"/>
+                    <h:outputText value="#{pollController.selected.fromDate}" title="#{bundle.ViewPollTitle_fromDate}"/>
+                    <h:outputText value="#{bundle.ViewPollLabel_toDate}"/>
+                    <h:outputText value="#{pollController.selected.toDate}" title="#{bundle.ViewPollTitle_toDate}"/>
+                    <h:outputText value="#{bundle.ViewPollLabel_result}"/>
+                    <h:outputText value="#{pollController.selected.result}" title="#{bundle.ViewPollTitle_result}"/>
+                    <h:outputText value="#{bundle.ViewPollLabel_id}"/>
+                    <h:outputText value="#{pollController.selected.id}" title="#{bundle.ViewPollTitle_id}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pollController.destroyAndView}" value="#{bundle.ViewPollDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPollEditLink}"/>
+                <br />
+                <h:commandLink action="#{pollController.prepareCreate}" value="#{bundle.ViewPollCreateLink}" />
+                <br />
+                <h:commandLink action="#{pollController.prepareList}" value="#{bundle.ViewPollShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPollIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

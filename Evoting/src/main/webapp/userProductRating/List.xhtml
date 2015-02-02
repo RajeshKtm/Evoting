@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListUserProductRatingTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListUserProductRatingEmpty}" rendered="#{userProductRatingController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{userProductRatingController.items.rowCount > 0}">
+                    <h:outputText value="#{userProductRatingController.pagination.pageFirstItem + 1}..#{userProductRatingController.pagination.pageLastItem + 1}/#{userProductRatingController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{userProductRatingController.previous}" value="#{bundle.Previous} #{userProductRatingController.pagination.pageSize}" rendered="#{userProductRatingController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{userProductRatingController.next}" value="#{bundle.Next} #{userProductRatingController.pagination.pageSize}" rendered="#{userProductRatingController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{userProductRatingController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUserProductRatingTitle_userId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUserProductRatingTitle_product}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.product}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUserProductRatingTitle_dateRated}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateRated}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUserProductRatingTitle_rating}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rating}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUserProductRatingTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{userProductRatingController.prepareView}" value="#{bundle.ListUserProductRatingViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{userProductRatingController.prepareEdit}" value="#{bundle.ListUserProductRatingEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{userProductRatingController.destroy}" value="#{bundle.ListUserProductRatingDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{userProductRatingController.prepareCreate}" value="#{bundle.ListUserProductRatingCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListUserProductRatingIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

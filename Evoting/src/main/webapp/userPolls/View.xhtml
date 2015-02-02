@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewUserPollsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewUserPollsLabel_userId}"/>
+                    <h:outputText value="#{userPollsController.selected.userId}" title="#{bundle.ViewUserPollsTitle_userId}"/>
+                    <h:outputText value="#{bundle.ViewUserPollsLabel_pollOptionId}"/>
+                    <h:outputText value="#{userPollsController.selected.pollOptionId}" title="#{bundle.ViewUserPollsTitle_pollOptionId}"/>
+                    <h:outputText value="#{bundle.ViewUserPollsLabel_pollId}"/>
+                    <h:outputText value="#{userPollsController.selected.pollId}" title="#{bundle.ViewUserPollsTitle_pollId}"/>
+                    <h:outputText value="#{bundle.ViewUserPollsLabel_id}"/>
+                    <h:outputText value="#{userPollsController.selected.id}" title="#{bundle.ViewUserPollsTitle_id}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{userPollsController.destroyAndView}" value="#{bundle.ViewUserPollsDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewUserPollsEditLink}"/>
+                <br />
+                <h:commandLink action="#{userPollsController.prepareCreate}" value="#{bundle.ViewUserPollsCreateLink}" />
+                <br />
+                <h:commandLink action="#{userPollsController.prepareList}" value="#{bundle.ViewUserPollsShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewUserPollsIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

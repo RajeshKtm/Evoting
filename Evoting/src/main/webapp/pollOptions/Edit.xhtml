@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPollOptionsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPollOptionsLabel_pollId}" for="pollId" />
+                    <h:selectOneMenu id="pollId" value="#{pollOptionsController.selected.pollId}" title="#{bundle.EditPollOptionsTitle_pollId}" required="true" requiredMessage="#{bundle.EditPollOptionsRequiredMessage_pollId}">
+                        <f:selectItems value="#{pollController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPollOptionsLabel_optionName}" for="optionName" />
+                    <h:inputText id="optionName" value="#{pollOptionsController.selected.optionName}" title="#{bundle.EditPollOptionsTitle_optionName}" />
+                    <h:outputLabel value="#{bundle.EditPollOptionsLabel_totalCount}" for="totalCount" />
+                    <h:inputText id="totalCount" value="#{pollOptionsController.selected.totalCount}" title="#{bundle.EditPollOptionsTitle_totalCount}" />
+                    <h:outputLabel value="#{bundle.EditPollOptionsLabel_result}" for="result" />
+                    <h:inputText id="result" value="#{pollOptionsController.selected.result}" title="#{bundle.EditPollOptionsTitle_result}" />
+                    <h:outputLabel value="#{bundle.EditPollOptionsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{pollOptionsController.selected.id}" title="#{bundle.EditPollOptionsTitle_id}" />
+                </h:panelGrid>
+                <h:commandLink action="#{pollOptionsController.update}" value="#{bundle.EditPollOptionsSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPollOptionsViewLink}"/>
+                <br />
+                <h:commandLink action="#{pollOptionsController.prepareList}" value="#{bundle.EditPollOptionsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPollOptionsIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

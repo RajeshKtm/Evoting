@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewUserDetailTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewUserDetailLabel_voterId}"/>
+                    <h:outputText value="#{userDetailController.selected.voterId}" title="#{bundle.ViewUserDetailTitle_voterId}"/>
+                    <h:outputText value="#{bundle.ViewUserDetailLabel_addressId}"/>
+                    <h:outputText value="#{userDetailController.selected.addressId}" title="#{bundle.ViewUserDetailTitle_addressId}"/>
+                    <h:outputText value="#{bundle.ViewUserDetailLabel_id}"/>
+                    <h:outputText value="#{userDetailController.selected.id}" title="#{bundle.ViewUserDetailTitle_id}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{userDetailController.destroyAndView}" value="#{bundle.ViewUserDetailDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewUserDetailEditLink}"/>
+                <br />
+                <h:commandLink action="#{userDetailController.prepareCreate}" value="#{bundle.ViewUserDetailCreateLink}" />
+                <br />
+                <h:commandLink action="#{userDetailController.prepareList}" value="#{bundle.ViewUserDetailShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewUserDetailIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

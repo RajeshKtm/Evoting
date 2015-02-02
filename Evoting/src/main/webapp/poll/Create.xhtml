@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePollTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePollLabel_title}" for="title" />
+                    <h:inputText id="title" value="#{pollController.selected.title}" title="#{bundle.CreatePollTitle_title}" />
+                    <h:outputLabel value="#{bundle.CreatePollLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{pollController.selected.description}" title="#{bundle.CreatePollTitle_description}" />
+                    <h:outputLabel value="#{bundle.CreatePollLabel_fromDate}" for="fromDate" />
+                    <h:inputText id="fromDate" value="#{pollController.selected.fromDate}" title="#{bundle.CreatePollTitle_fromDate}" />
+                    <h:outputLabel value="#{bundle.CreatePollLabel_toDate}" for="toDate" />
+                    <h:inputText id="toDate" value="#{pollController.selected.toDate}" title="#{bundle.CreatePollTitle_toDate}" />
+                    <h:outputLabel value="#{bundle.CreatePollLabel_result}" for="result" />
+                    <h:inputText id="result" value="#{pollController.selected.result}" title="#{bundle.CreatePollTitle_result}" />
+                    <h:outputLabel value="#{bundle.CreatePollLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{pollController.selected.id}" title="#{bundle.CreatePollTitle_id}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pollController.create}" value="#{bundle.CreatePollSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{pollController.prepareList}" value="#{bundle.CreatePollShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePollIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewElectionCandidateTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewElectionCandidateLabel_electionId}"/>
+                    <h:outputText value="#{electionCandidateController.selected.electionId}" title="#{bundle.ViewElectionCandidateTitle_electionId}"/>
+                    <h:outputText value="#{bundle.ViewElectionCandidateLabel_candidateId}"/>
+                    <h:outputText value="#{electionCandidateController.selected.candidateId}" title="#{bundle.ViewElectionCandidateTitle_candidateId}"/>
+                    <h:outputText value="#{bundle.ViewElectionCandidateLabel_party}"/>
+                    <h:outputText value="#{electionCandidateController.selected.party}" title="#{bundle.ViewElectionCandidateTitle_party}"/>
+                    <h:outputText value="#{bundle.ViewElectionCandidateLabel_constituencyState}"/>
+                    <h:outputText value="#{electionCandidateController.selected.constituencyState}" title="#{bundle.ViewElectionCandidateTitle_constituencyState}"/>
+                    <h:outputText value="#{bundle.ViewElectionCandidateLabel_post}"/>
+                    <h:outputText value="#{electionCandidateController.selected.post}" title="#{bundle.ViewElectionCandidateTitle_post}"/>
+                    <h:outputText value="#{bundle.ViewElectionCandidateLabel_id}"/>
+                    <h:outputText value="#{electionCandidateController.selected.id}" title="#{bundle.ViewElectionCandidateTitle_id}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{electionCandidateController.destroyAndView}" value="#{bundle.ViewElectionCandidateDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewElectionCandidateEditLink}"/>
+                <br />
+                <h:commandLink action="#{electionCandidateController.prepareCreate}" value="#{bundle.ViewElectionCandidateCreateLink}" />
+                <br />
+                <h:commandLink action="#{electionCandidateController.prepareList}" value="#{bundle.ViewElectionCandidateShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewElectionCandidateIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
