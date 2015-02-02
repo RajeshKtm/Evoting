@@ -1,18 +1,43 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
-        <br />
-        <h:link outcome="/address/List" value="Show All Address Items"/>
-    </h:body>
+        <h:form>
+            <center>
+                <h:panelGroup id="dbtnholder">
+                    <f:view contentType="text/html">
 
+                        <p:dock id="dock1" widgetVar="evotingdock" rendered="true"> 
+                            <p:menuitem value="E-voting" icon="/resources/images/itunes.png" url="/faces/welcomeToVote.xhtml"/>
+                            <p:menuitem value="E-Rating" icon="/resources/images/ichat.png" url="/faces/welcomeToVote.xhtml"/>
+                            <p:menuitem value="E-Polling" icon="/resources/images/safarib.png" url="/faces/welcomeToVote.xhtml"/>
+                            <p:menuitem value="Voting results" icon="/resources/images/member.png" url="/faces/welcomeToVote.xhtml"/>                                                     
+                            <p:menuitem value="Polling results" icon="/resources/images/microFinance.png" url="/faces/welcomeToVote.xhtml"/>  
+                            <p:menuitem value="Rating results" title="Repayment Schedule"  icon="/resources/images/trash.png" url="/faces/welcomeToVote.xhtml"/>
+                        </p:dock> 
+
+                        <p:stack  id="stack1" icon="/resources/images/stack.png">    
+                            <p:menuitem value="Admin Settings"  icon="/resources/images/aperture.png" url="/faces/welcomeToVote.xhtml"/>
+                            <p:menuitem value="Discussion Room"  icon="/resources/images/photoshop.png"  url="/faces/welcomeToVote.xhtml"/>
+                            <p:menuitem value="Survey"  icon="/resources/images/coda.png" url="/faces/welcomeToVote.xhtml"/>
+                            <p:menuitem value="Reports"  icon="/resources/images/safari.png" url="/faces/welcomeToVote.xhtml"/>
+                            <p:menuitem value="Sign Up"  icon="/resources/images/finder.png" url="/faces/welcomeToVote.xhtml"/>
+                            <p:menuitem value="Log out" icon="/resources/images/logo.png" url="/faces/welcomeToVote.xhtml"/>
+
+                        </p:stack>
+                    </f:view>
+                </h:panelGroup>
+            </center>
+        </h:form>
+
+
+    </h:body>
 </html>
 
